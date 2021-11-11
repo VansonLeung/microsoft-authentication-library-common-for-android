@@ -27,15 +27,23 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.net.http.SslError;
 import android.os.Build;
+import android.os.Message;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.webkit.ClientCertRequest;
 import android.webkit.HttpAuthHandler;
+import android.webkit.RenderProcessGoneDetail;
+import android.webkit.SafeBrowsingResponse;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
+import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.VisibleForTesting;
 
@@ -94,7 +102,7 @@ public abstract class OAuth2WebViewClient extends WebViewClient {
         mActivity = activity;
         mCompletionCallback = completionCallback;
         mPageLoadedCallback = pageLoadedCallback;
-     }
+    }
 
     @Override
     public void onReceivedHttpAuthRequest(WebView view, final HttpAuthHandler handler,
@@ -115,12 +123,78 @@ public abstract class OAuth2WebViewClient extends WebViewClient {
     }
 
     @Override
+    public void onReceivedHttpError(WebView view, WebResourceRequest request, WebResourceResponse errorResponse) {
+        Log.d(TAG, "onReceivedHttpError");
+        super.onReceivedHttpError(view, request, errorResponse);
+    }
+
+    @Override
+    public void onFormResubmission(WebView view, Message dontResend, Message resend) {
+        Log.d(TAG, "onFormResubmission");
+        super.onFormResubmission(view, dontResend, resend);
+    }
+
+    @Override
+    public void onPageCommitVisible(WebView view, String url) {
+        Log.d(TAG, "onPageCommitVisible");
+        super.onPageCommitVisible(view, url);
+    }
+
+    @Override
+    public void onReceivedClientCertRequest(WebView view, ClientCertRequest request) {
+        Log.d(TAG, "onReceivedClientCertRequest");
+        super.onReceivedClientCertRequest(view, request);
+    }
+
+    @Override
+    public void onReceivedLoginRequest(WebView view, String realm, @Nullable String account, String args) {
+        Log.d(TAG, "onReceivedLoginRequest");
+        super.onReceivedLoginRequest(view, realm, account, args);
+    }
+
+    @Override
+    public void onSafeBrowsingHit(WebView view, WebResourceRequest request, int threatType, SafeBrowsingResponse callback) {
+        Log.d(TAG, "onSafeBrowsingHit");
+        super.onSafeBrowsingHit(view, request, threatType, callback);
+    }
+
+    @Override
+    public void onScaleChanged(WebView view, float oldScale, float newScale) {
+        Log.d(TAG, "onScaleChanged");
+        super.onScaleChanged(view, oldScale, newScale);
+    }
+
+    @Override
+    public void onUnhandledKeyEvent(WebView view, KeyEvent event) {
+        Log.d(TAG, "onUnhandledKeyEvent");
+        super.onUnhandledKeyEvent(view, event);
+    }
+
+    @Override
     @SuppressWarnings("deprecation")
     public void onReceivedError(final WebView view,
                                 final int errorCode,
                                 final String description,
                                 final String failingUrl) {
         sendErrorToCallback(view, errorCode, description);
+    }
+
+    @Override
+    public void onLoadResource(WebView view, String url) {
+        super.onLoadResource(view, url);
+        Log.d(TAG, "onLoadResource");
+    }
+
+    @Override
+    public void onTooManyRedirects(WebView view, Message cancelMsg, Message continueMsg) {
+        super.onTooManyRedirects(view, cancelMsg, continueMsg);
+        Log.d(TAG, "onTooMayRedirects");
+    }
+
+    @Override
+    public boolean onRenderProcessGone(WebView view, RenderProcessGoneDetail detail) {
+        Log.d(TAG, "onRenderProcessGone");
+        return super.onRenderProcessGone(view, detail);
     }
 
     /**
@@ -186,6 +260,7 @@ public abstract class OAuth2WebViewClient extends WebViewClient {
     @Override
     public void onPageFinished(final WebView view,
                                final String url) {
+        Log.d(TAG, "onPageFinished");
         super.onPageFinished(view, url);
         mPageLoadedCallback.onPageLoaded(url);
 
@@ -202,7 +277,7 @@ public abstract class OAuth2WebViewClient extends WebViewClient {
     public void onPageStarted(final WebView view,
                               final String url,
                               final Bitmap favicon) {
-        checkStartUrl(url);
+//        checkStartUrl(url);
         Logger.info(TAG, "WebView starts loading.");
         super.onPageStarted(view, url, favicon);
     }
