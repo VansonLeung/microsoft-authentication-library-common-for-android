@@ -258,6 +258,7 @@ public class MsalCppOAuth2TokenCache
                 normalizedEnvironment,
                 CredentialType.RefreshToken,
                 null,
+                null, //wildcard (*)
                 normalizedRealm,
                 null,
                 SCHEME_BEARER
