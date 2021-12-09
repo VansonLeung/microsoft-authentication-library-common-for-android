@@ -24,14 +24,17 @@ package com.microsoft.identity.common.internal;
 
 import androidx.test.core.app.ApplicationProvider;
 
+import com.microsoft.identity.common.BuildConfig;
 import com.microsoft.identity.common.internal.broker.BrokerData;
 import com.microsoft.identity.common.internal.broker.BrokerValidator;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.function.ThrowingRunnable;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.util.ReflectionHelpers;
 
 import java.util.Set;
 
@@ -66,6 +69,17 @@ public class BrokerValidatorTests {
         Assert.assertEquals(2, brokerData.size());
         Assert.assertTrue(brokerData.contains(BrokerData.COMPANY_PORTAL));
         Assert.assertTrue(brokerData.contains(BrokerData.MICROSOFT_AUTHENTICATOR_PROD));
+    }
+
+    @Test
+    public void testDebugBrokersInReleaseMode() {
+        ReflectionHelpers.setStaticField(BuildConfig.class, "DEBUG", false);
+        Assert.assertThrows("Cannot trust debug brokers in non-debug builds.", RuntimeException.class, new ThrowingRunnable() {
+            @Override
+            public void run() throws Throwable {
+                BrokerValidator.setShouldTrustDebugBrokers(true);
+            }
+        });
     }
 
 }

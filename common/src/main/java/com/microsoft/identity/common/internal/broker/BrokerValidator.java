@@ -60,7 +60,7 @@ public class BrokerValidator {
 
     public static void setShouldTrustDebugBrokers(final boolean shouldTrustDebugBrokers) {
         if (!BuildConfig.DEBUG && shouldTrustDebugBrokers) {
-            Logger.warn(TAG, "You are forcing to trust debug brokers in non-debug builds.");
+            throw new RuntimeException("Cannot trust debug brokers in non-debug builds.");
         }
         BrokerValidator.sShouldTrustDebugBrokers = shouldTrustDebugBrokers;
     }
@@ -150,6 +150,7 @@ public class BrokerValidator {
 
     /**
      * Get an iterator of access to valid broker signatures.
+     *
      * @return an iterator of access to valid broker signatures.
      */
     public Iterator<String> getValidBrokerSignatures() {
@@ -232,7 +233,7 @@ public class BrokerValidator {
             final PackageHelper info = new PackageHelper(context.getPackageManager());
             final String signatureDigest = info.getCurrentSignatureForPackage(packageName);
             if (BrokerData.MICROSOFT_AUTHENTICATOR_PROD.signatureHash.equals(signatureDigest)
-                || BrokerData.MICROSOFT_AUTHENTICATOR_DEBUG.signatureHash.equals(signatureDigest)) {
+                    || BrokerData.MICROSOFT_AUTHENTICATOR_DEBUG.signatureHash.equals(signatureDigest)) {
                 // If the caller is the Authenticator, check if the redirect uri matches with either
                 // the one generated with package name and signature or broker redirect uri.
                 isValidBrokerRedirect |= StringUtil.equalsIgnoreCase(redirectUri, AuthenticationConstants.Broker.BROKER_REDIRECT_URI);
