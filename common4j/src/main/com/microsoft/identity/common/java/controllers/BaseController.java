@@ -34,14 +34,12 @@ import com.microsoft.identity.common.java.commands.parameters.GenerateShrCommand
 import com.microsoft.identity.common.java.commands.parameters.RemoveAccountCommandParameters;
 import com.microsoft.identity.common.java.constants.OAuth2ErrorCode;
 import com.microsoft.identity.common.java.constants.OAuth2SubErrorCode;
-import com.microsoft.identity.common.java.providers.microsoft.microsoftsts.MicrosoftStsRopcTokenRequest;
 import com.microsoft.identity.common.java.providers.oauth2.OAuth2StrategyParameters;
 import com.microsoft.identity.common.java.result.AcquireTokenResult;
 import com.microsoft.identity.common.java.result.GenerateShrResult;
 import com.microsoft.identity.common.java.result.LocalAuthenticationResult;
 import com.microsoft.identity.common.java.telemetry.Telemetry;
 import com.microsoft.identity.common.java.providers.oauth2.IResult;
-import com.microsoft.identity.common.java.providers.oauth2.OAuth2StrategyParameters;
 import com.microsoft.identity.common.java.telemetry.events.CacheEndEvent;
 import com.microsoft.identity.common.java.AuthenticationConstants;
 import com.microsoft.identity.common.java.WarningType;
@@ -283,7 +281,8 @@ public abstract class BaseController {
                             .setAuthority(requestAuthority.getAuthorityURL())
                             .setMultipleCloudAware(requestAuthority.mMultipleCloudsSupported)
                             .setState(interactiveTokenCommandParameters.getPlatformComponents().getStateGenerator().generate())
-                            .setSlice(requestAuthority.mSlice);
+                            .setSlice(requestAuthority.mSlice)
+                            .setApplicationIdentifier(parameters.getApplicationIdentifier());
                 }
             }
 
