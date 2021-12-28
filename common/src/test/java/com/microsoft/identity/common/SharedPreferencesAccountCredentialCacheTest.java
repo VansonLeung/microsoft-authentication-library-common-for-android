@@ -707,6 +707,7 @@ public class SharedPreferencesAccountCredentialCacheTest {
                 null, // * wildcard
                 CredentialType.RefreshToken,
                 CLIENT_ID,
+                APPLICATION_IDENTIFIER,
                 REALM,
                 TARGET,
                 BEARER_AUTHENTICATION_SCHEME.getName()
@@ -744,6 +745,7 @@ public class SharedPreferencesAccountCredentialCacheTest {
                 ENVIRONMENT,
                 null,
                 CLIENT_ID,
+                APPLICATION_IDENTIFIER,
                 null,
                 TARGET,
                 BEARER_AUTHENTICATION_SCHEME.getName()
@@ -785,6 +787,7 @@ public class SharedPreferencesAccountCredentialCacheTest {
                 ENVIRONMENT,
                 null,
                 null,
+                APPLICATION_IDENTIFIER,
                 REALM,
                 TARGET,
                 BEARER_AUTHENTICATION_SCHEME.getName()
@@ -826,6 +829,7 @@ public class SharedPreferencesAccountCredentialCacheTest {
                 ENVIRONMENT,
                 CredentialType.RefreshToken,
                 CLIENT_ID,
+                APPLICATION_IDENTIFIER,
                 REALM,
                 TARGET,
                 BEARER_AUTHENTICATION_SCHEME.getName()
@@ -872,6 +876,7 @@ public class SharedPreferencesAccountCredentialCacheTest {
                 ENVIRONMENT,
                 CredentialType.RefreshToken,
                 CLIENT_ID,
+                APPLICATION_IDENTIFIER,
                 REALM,
                 searchTarget,
                 BEARER_AUTHENTICATION_SCHEME.getName()
@@ -923,6 +928,7 @@ public class SharedPreferencesAccountCredentialCacheTest {
                 ENVIRONMENT,
                 CredentialType.RefreshToken,
                 CLIENT_ID,
+                APPLICATION_IDENTIFIER,
                 REALM,
                 searchTarget,
                 BEARER_AUTHENTICATION_SCHEME.getName()
@@ -976,6 +982,7 @@ public class SharedPreferencesAccountCredentialCacheTest {
                 ENVIRONMENT,
                 CredentialType.RefreshToken,
                 CLIENT_ID,
+                APPLICATION_IDENTIFIER,
                 REALM,
                 searchTarget,
                 BEARER_AUTHENTICATION_SCHEME.getName()
@@ -1019,6 +1026,7 @@ public class SharedPreferencesAccountCredentialCacheTest {
                 ENVIRONMENT,
                 CredentialType.RefreshToken,
                 CLIENT_ID,
+                APPLICATION_IDENTIFIER,
                 REALM,
                 TARGET,
                 BEARER_AUTHENTICATION_SCHEME.getName()
@@ -1068,6 +1076,7 @@ public class SharedPreferencesAccountCredentialCacheTest {
                 ENVIRONMENT,
                 CredentialType.AccessToken,
                 CLIENT_ID,
+                APPLICATION_IDENTIFIER,
                 null,
                 TARGET,
                 BEARER_AUTHENTICATION_SCHEME.getName()
@@ -1117,6 +1126,7 @@ public class SharedPreferencesAccountCredentialCacheTest {
                 ENVIRONMENT,
                 CredentialType.AccessToken,
                 CLIENT_ID,
+                APPLICATION_IDENTIFIER,
                 null,
                 null,
                 BEARER_AUTHENTICATION_SCHEME.getName()
@@ -1166,6 +1176,7 @@ public class SharedPreferencesAccountCredentialCacheTest {
                 ENVIRONMENT,
                 CredentialType.AccessToken,
                 CLIENT_ID,
+                APPLICATION_IDENTIFIER,
                 REALM,
                 null,
                 BEARER_AUTHENTICATION_SCHEME.getName()
@@ -1216,6 +1227,7 @@ public class SharedPreferencesAccountCredentialCacheTest {
                 ENVIRONMENT,
                 CredentialType.AccessToken,
                 CLIENT_ID,
+                APPLICATION_IDENTIFIER,
                 REALM,
                 null,
                 BEARER_AUTHENTICATION_SCHEME.getName()
@@ -1369,6 +1381,7 @@ public class SharedPreferencesAccountCredentialCacheTest {
                 ENVIRONMENT,
                 CredentialType.AccessToken,
                 CLIENT_ID,
+                APPLICATION_IDENTIFIER,
                 null,
                 TARGET,
                 BEARER_AUTHENTICATION_SCHEME.getName()
@@ -1418,6 +1431,7 @@ public class SharedPreferencesAccountCredentialCacheTest {
                 ENVIRONMENT,
                 CredentialType.AccessToken,
                 CLIENT_ID,
+                APPLICATION_IDENTIFIER,
                 null,
                 null,
                 BEARER_AUTHENTICATION_SCHEME.getName()
@@ -1467,6 +1481,7 @@ public class SharedPreferencesAccountCredentialCacheTest {
                 ENVIRONMENT,
                 CredentialType.AccessToken,
                 CLIENT_ID,
+                APPLICATION_IDENTIFIER,
                 REALM,
                 null,
                 BEARER_AUTHENTICATION_SCHEME.getName()
@@ -1490,6 +1505,7 @@ public class SharedPreferencesAccountCredentialCacheTest {
                 ENVIRONMENT,
                 CredentialType.PrimaryRefreshToken,
                 null, /* client id */
+                APPLICATION_IDENTIFIER,
                 null,
                 null,
                 null
@@ -1513,6 +1529,7 @@ public class SharedPreferencesAccountCredentialCacheTest {
                 ENVIRONMENT,
                 CredentialType.PrimaryRefreshToken,
                 CLIENT_ID,
+                APPLICATION_IDENTIFIER,
                 null,
                 null,
                 null
@@ -1536,6 +1553,7 @@ public class SharedPreferencesAccountCredentialCacheTest {
                 ENVIRONMENT,
                 CredentialType.PrimaryRefreshToken,
                 "another-client-id",
+                APPLICATION_IDENTIFIER,
                 null,
                 null,
                 null

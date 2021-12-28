@@ -46,6 +46,7 @@ import org.robolectric.RobolectricTestRunner;
 import java.util.List;
 import static com.microsoft.identity.common.MicrosoftStsAccountCredentialAdapterTest.MOCK_ID_TOKEN_WITH_CLAIMS;
 import static com.microsoft.identity.common.MsalOAuth2TokenCacheTest.AccountCredentialTestBundle;
+import static com.microsoft.identity.common.SharedPreferencesAccountCredentialCacheTest.APPLICATION_IDENTIFIER;
 import static com.microsoft.identity.common.SharedPreferencesAccountCredentialCacheTest.CACHED_AT;
 import static com.microsoft.identity.common.SharedPreferencesAccountCredentialCacheTest.CLIENT_ID;
 import static com.microsoft.identity.common.SharedPreferencesAccountCredentialCacheTest.ENVIRONMENT;
@@ -88,6 +89,7 @@ public class MsalCppOAuth2TokenCacheTest {
                 EXPIRES_ON,
                 SECRET,
                 CLIENT_ID,
+                APPLICATION_IDENTIFIER,
                 SECRET,
                 MOCK_ID_TOKEN_WITH_CLAIMS,
                 null,
@@ -411,6 +413,7 @@ public class MsalCppOAuth2TokenCacheTest {
 
         final ICacheRecord cacheRecord = mCppCache.load(
                 mTestBundle.mGeneratedIdToken.getClientId(),
+                mTestBundle.mGeneratedAccessToken.getApplicationIdentifier(),
                 mTestBundle.mGeneratedAccessToken.getTarget(),
                 generatedAccount,
                 new BearerAuthenticationSchemeInternal()
@@ -448,6 +451,7 @@ public class MsalCppOAuth2TokenCacheTest {
 
         final ICacheRecord cacheRecord = mCppCache.load(
                 mTestBundle.mGeneratedIdToken.getClientId(),
+                mTestBundle.mGeneratedAccessToken.getApplicationIdentifier(),
                 mTestBundle.mGeneratedAccessToken.getTarget(),
                 generatedAccount,
                 new BearerAuthenticationSchemeInternal()

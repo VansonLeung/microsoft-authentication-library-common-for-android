@@ -23,6 +23,7 @@
 package com.microsoft.identity.common;
 
 import static com.microsoft.identity.common.MicrosoftStsAccountCredentialAdapterTest.MOCK_ID_TOKEN_WITH_CLAIMS;
+import static com.microsoft.identity.common.SharedPreferencesAccountCredentialCacheTest.APPLICATION_IDENTIFIER;
 import static com.microsoft.identity.common.SharedPreferencesAccountCredentialCacheTest.BEARER_AUTHENTICATION_SCHEME;
 import static com.microsoft.identity.common.SharedPreferencesAccountCredentialCacheTest.CACHED_AT;
 import static com.microsoft.identity.common.SharedPreferencesAccountCredentialCacheTest.CLIENT_ID;
@@ -72,6 +73,7 @@ import com.microsoft.identity.common.java.providers.microsoft.microsoftsts.Micro
 import com.microsoft.identity.common.java.providers.microsoft.microsoftsts.MicrosoftStsOAuth2Strategy;
 import com.microsoft.identity.common.java.providers.microsoft.microsoftsts.MicrosoftStsTokenResponse;
 import com.microsoft.identity.common.java.providers.oauth2.OAuth2TokenCache;
+import com.microsoft.identity.common.java.telemetry.TelemetryEventStrings;
 import com.microsoft.identity.common.shadows.ShadowAndroidSdkStorageEncryptionManager;
 
 import org.junit.After;
@@ -158,6 +160,7 @@ public class BrokerOAuth2TokenCacheTest {
                 EXPIRES_ON,
                 SECRET,
                 CLIENT_ID,
+                APPLICATION_IDENTIFIER,
                 SECRET,
                 MOCK_ID_TOKEN_WITH_CLAIMS,
                 "1",
@@ -177,6 +180,7 @@ public class BrokerOAuth2TokenCacheTest {
                 EXPIRES_ON,
                 SECRET,
                 CLIENT_ID,
+                APPLICATION_IDENTIFIER,
                 SECRET,
                 MOCK_ID_TOKEN_WITH_CLAIMS,
                 null,
@@ -200,6 +204,7 @@ public class BrokerOAuth2TokenCacheTest {
                             EXPIRES_ON,
                             SECRET,
                             UUID.randomUUID().toString(),
+                            APPLICATION_IDENTIFIER,
                             SECRET,
                             MOCK_ID_TOKEN_WITH_CLAIMS,
                             null,
@@ -558,6 +563,7 @@ public class BrokerOAuth2TokenCacheTest {
     public void testCacheMiss() {
         final ICacheRecord cacheRecord = mBrokerOAuth2TokenCache.load(
                 CLIENT_ID,
+                APPLICATION_IDENTIFIER,
                 TARGET,
                 mDefaultAppUidTestBundle.mGeneratedAccount,
                 BEARER_AUTHENTICATION_SCHEME
@@ -582,6 +588,7 @@ public class BrokerOAuth2TokenCacheTest {
 
         final ICacheRecord cacheRecord = mBrokerOAuth2TokenCache.load(
                 CLIENT_ID,
+                APPLICATION_IDENTIFIER,
                 TARGET,
                 mDefaultAppUidTestBundle.mGeneratedAccount,
                 BEARER_AUTHENTICATION_SCHEME
@@ -606,6 +613,7 @@ public class BrokerOAuth2TokenCacheTest {
 
         final ICacheRecord cacheRecord = mBrokerOAuth2TokenCache.load(
                 CLIENT_ID,
+                APPLICATION_IDENTIFIER,
                 TARGET,
                 mDefaultFociTestBundle.mGeneratedAccount,
                 BEARER_AUTHENTICATION_SCHEME
@@ -948,6 +956,7 @@ public class BrokerOAuth2TokenCacheTest {
 
         final ICacheRecord retrievedResult = mBrokerOAuth2TokenCache.load(
                 mDefaultAppUidTestBundle.mGeneratedIdToken.getClientId(),
+                mDefaultAppUidTestBundle.mGeneratedAccessToken.getApplicationIdentifier(),
                 mDefaultAppUidTestBundle.mGeneratedAccessToken.getTarget(),
                 mDefaultAppUidTestBundle.mGeneratedAccount,
                 BEARER_AUTHENTICATION_SCHEME
@@ -1013,6 +1022,7 @@ public class BrokerOAuth2TokenCacheTest {
 
         final ICacheRecord retrievedResult = mBrokerOAuth2TokenCache.load(
                 mDefaultAppUidTestBundle.mGeneratedIdToken.getClientId(),
+                mDefaultAppUidTestBundle.mGeneratedAccessToken.getApplicationIdentifier(),
                 mDefaultAppUidTestBundle.mGeneratedAccessToken.getTarget(),
                 mDefaultAppUidTestBundle.mGeneratedAccount,
                 BEARER_AUTHENTICATION_SCHEME
@@ -1078,6 +1088,7 @@ public class BrokerOAuth2TokenCacheTest {
 
         final ICacheRecord retrievedResult = mBrokerOAuth2TokenCache.load(
                 mDefaultFociTestBundle.mGeneratedIdToken.getClientId(),
+                mDefaultFociTestBundle.mGeneratedAccessToken.getApplicationIdentifier(),
                 mDefaultFociTestBundle.mGeneratedAccessToken.getTarget(),
                 mDefaultFociTestBundle.mGeneratedAccount,
                 BEARER_AUTHENTICATION_SCHEME
@@ -1143,6 +1154,7 @@ public class BrokerOAuth2TokenCacheTest {
 
         final ICacheRecord retrievedResult = mBrokerOAuth2TokenCache.load(
                 mDefaultFociTestBundle.mGeneratedIdToken.getClientId(),
+                mDefaultFociTestBundle.mGeneratedAccessToken.getApplicationIdentifier(),
                 mDefaultFociTestBundle.mGeneratedAccessToken.getTarget(),
                 mDefaultFociTestBundle.mGeneratedAccount,
                 BEARER_AUTHENTICATION_SCHEME

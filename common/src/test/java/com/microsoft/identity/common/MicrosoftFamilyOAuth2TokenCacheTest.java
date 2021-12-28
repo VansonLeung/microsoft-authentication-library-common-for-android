@@ -36,6 +36,7 @@ import com.microsoft.identity.common.java.providers.microsoft.MicrosoftAccount;
 import com.microsoft.identity.common.java.providers.microsoft.MicrosoftRefreshToken;
 import com.microsoft.identity.common.java.providers.microsoft.microsoftsts.MicrosoftStsAuthorizationRequest;
 import com.microsoft.identity.common.java.providers.microsoft.microsoftsts.MicrosoftStsTokenResponse;
+import com.microsoft.identity.common.java.telemetry.TelemetryEventStrings;
 import com.microsoft.identity.common.shadows.ShadowAndroidSdkStorageEncryptionManager;
 
 import org.junit.After;
@@ -48,6 +49,7 @@ import org.robolectric.annotation.Config;
 import java.util.UUID;
 
 import static com.microsoft.identity.common.MicrosoftStsAccountCredentialAdapterTest.MOCK_ID_TOKEN_WITH_CLAIMS;
+import static com.microsoft.identity.common.SharedPreferencesAccountCredentialCacheTest.APPLICATION_IDENTIFIER;
 import static com.microsoft.identity.common.SharedPreferencesAccountCredentialCacheTest.AUTHORITY_TYPE;
 import static com.microsoft.identity.common.SharedPreferencesAccountCredentialCacheTest.CACHED_AT;
 import static com.microsoft.identity.common.SharedPreferencesAccountCredentialCacheTest.CLIENT_ID;
@@ -107,6 +109,7 @@ public class MicrosoftFamilyOAuth2TokenCacheTest extends MsalOAuth2TokenCacheTes
                 EXPIRES_ON,
                 SECRET,
                 CLIENT_ID,
+                APPLICATION_IDENTIFIER,
                 SECRET,
                 MOCK_ID_TOKEN_WITH_CLAIMS,
                 "1",
@@ -227,6 +230,7 @@ public class MicrosoftFamilyOAuth2TokenCacheTest extends MsalOAuth2TokenCacheTes
                 EXPIRES_ON,
                 SECRET,
                 CLIENT_ID,
+                APPLICATION_IDENTIFIER,
                 SECRET,
                 MOCK_ID_TOKEN_WITH_CLAIMS,
                 "1",
@@ -285,6 +289,7 @@ public class MicrosoftFamilyOAuth2TokenCacheTest extends MsalOAuth2TokenCacheTes
                 EXPIRES_ON,
                 SECRET,
                 CLIENT_ID + "2",
+                APPLICATION_IDENTIFIER,
                 SECRET,
                 MOCK_ID_TOKEN_WITH_CLAIMS,
                 "1",
@@ -406,6 +411,7 @@ public class MicrosoftFamilyOAuth2TokenCacheTest extends MsalOAuth2TokenCacheTes
                 EXPIRES_ON,
                 SECRET,
                 CLIENT_ID,
+                APPLICATION_IDENTIFIER,
                 SECRET,
                 MOCK_ID_TOKEN_WITH_CLAIMS,
                 "1",
@@ -464,6 +470,7 @@ public class MicrosoftFamilyOAuth2TokenCacheTest extends MsalOAuth2TokenCacheTes
                 EXPIRES_ON,
                 SECRET,
                 CLIENT_ID,
+                APPLICATION_IDENTIFIER,
                 SECRET,
                 MOCK_ID_TOKEN_WITH_CLAIMS,
                 "1",
